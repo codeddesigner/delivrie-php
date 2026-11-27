@@ -1,0 +1,29 @@
+# Lives in the codeddesigner/delivrie-php mirror (copied from sdk/php in codeddesigner/delivrie).
+# Run it from the Actions tab to tag the version in src/Delivrie.php; Packagist picks the tag up.
+name: Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: curl, json
+          coverage: none
+      - run: composer validate --strict && php tests/run.php
+      - name: Tag v<VERSION>
+        run: |
+          v="v$(sed -n "s/.*const VERSION = '\([^']*\)'.*/\1/p" src/Delivrie.php)"
+          if git ls-remote --exit-code --tags origin "$v" >/dev/null; then echo "$v already tagged"; exit 0; fi
+          git tag "$v" && git push origin "$v"
+          echo "::notice::Tagged $v. Packagist updates within a few minutes (or press Update on the package page)."
