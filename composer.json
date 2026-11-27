@@ -1,0 +1,13 @@
+{
+  "name": "delivrie/delivrie-php",
+  "description": "The PHP SDK for Delivrie: send email, manage domains, keys, webhooks, contacts and templates, and verify webhooks.",
+  "keywords": ["delivrie", "email", "transactional-email", "email-api", "sdk", "resend-alternative"],
+  "homepage": "https://delivrie.io/docs/php",
+  "type": "library",
+  "license": "MIT",
+  "authors": [{ "name": "Surce Inc", "email": "support@delivrie.io" }],
+  "support": { "docs": "https://delivrie.io/docs/php", "source": "https://github.com/codeddesigner/delivrie/tree/main/sdk/php" },
+  "require": { "php": ">=8.1", "ext-curl": "*", "ext-json": "*" },
+  "autoload": { "psr-4": { "Delivrie\\": "src/" } },
+  "scripts": { "test": "php tests/run.php" }
+}
