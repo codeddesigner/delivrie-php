@@ -1,4 +1,4 @@
-# Lives in the codeddesigner/delivrie-php mirror (copied from sdk/php in codeddesigner/delivrie).
+# Lives in the bysurce/delivrie-php mirror (copied from sdk/php in bysurce/delivrie).
 # Run it from the Actions tab to tag the version in src/Delivrie.php; Packagist picks the tag up.
 name: Release
 
